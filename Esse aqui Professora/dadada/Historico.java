@@ -1,4 +1,3 @@
-package dadada;
 
 import javax.swing.*;
 

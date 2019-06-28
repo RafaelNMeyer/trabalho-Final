@@ -1,4 +1,3 @@
-package dadada;
 
 public interface Selecionador {
 	

@@ -1,5 +1,3 @@
-package dadada;
-
 import java.awt.BorderLayout;
 
 import javax.swing.*;
