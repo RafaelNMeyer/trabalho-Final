@@ -15,10 +15,12 @@ public class Tela extends JFrame {
 		jogo = new Game();
 		historico = new Historico();
 		add(menu);
-		// selecionador = menu.getAtivaMenu();
-
 	}
-
+	
+	/**
+	 * método que controla qual painel estara visivel no frame
+	 * @param sel
+	 */
 	public void telaAtual(int sel) {
 		System.out.println(sel);
 		switch (sel) {
@@ -27,6 +29,8 @@ public class Tela extends JFrame {
 			break;
 		case 2:
 			setContentPane(jogo);
+			jogo.getTempoJogo().iniciarContagem(31);
+			jogo.atualizaLabelTempo();
 			break;
 		case 3:
 			setContentPane(historico);
@@ -60,5 +64,6 @@ public class Tela extends JFrame {
 	public void setHistorico(Historico historico) {
 		this.historico = historico;
 	}
-
+	
+	
 }

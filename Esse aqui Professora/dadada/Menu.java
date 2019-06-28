@@ -12,7 +12,6 @@ public class Menu extends JPanel {
 	private JButton jogar;
 	private JButton tutorial;
 	private JPanel painelBotoes;
-	public static int ativaMenu;
 
 	public Menu(Tela tela) {
 
@@ -36,6 +35,7 @@ public class Menu extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Jogar")) {
 					tela.telaAtual(2);
+					tela.setSize(640,700);
 				}
 				// retornaativaMenu(2);
 			}
@@ -51,17 +51,4 @@ public class Menu extends JPanel {
 		});
 
 	}
-
-	public static int retornaAtivaMenu(int sel) {
-		return sel;
-	}
-
-	public int getAtivaMenu() {
-		return ativaMenu;
-	}
-
-	public void setAtivaMenu(int AtivaMenu) {
-		this.ativaMenu = ativaMenu;
-	}
-
 }
