@@ -29,7 +29,7 @@ public class Tela extends JFrame {
 		case 2:
 			setContentPane(jogo);
 			jogo.getTempoJogo().iniciarContagem(31);
-			//jogo.getTempoJogo().iniciaTempoEmbaralhar();
+			jogo.getTempoJogo().iniciaTempoEmbaralhar();
 			jogo.atualizaLabelTempo();
 			break;
 		case 3:

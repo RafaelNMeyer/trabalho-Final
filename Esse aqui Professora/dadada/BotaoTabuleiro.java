@@ -64,8 +64,10 @@ public class BotaoTabuleiro extends JButton {
 			}
 			else {
 				jogo.getTempoJogo().cancelaTempoEmbaralhar();
+				jogo.getTempoJogo().pararTempoJogo();
 				JOptionPane.showMessageDialog(null,
-						"Você clicou em um quadrado BRANCO!\nJogo encerrado!",
+						"Você clicou em um quadrado BRANCO!\nJogo encerrado!\n"
+						+ "Sua pontuação: "+jogo.getScore(),
 						"GAME OVER", JOptionPane.ERROR_MESSAGE);
 			}
 			

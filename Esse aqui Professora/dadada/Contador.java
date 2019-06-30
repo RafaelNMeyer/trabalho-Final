@@ -5,7 +5,7 @@ public class Contador
 {
 	private int tempo;
 	private Game jogo;
-	Timer timer;
+	Timer timerJogo, timerEmbaralhador;
 	
 	public Contador(Game g) {
 		jogo = g;
@@ -19,9 +19,8 @@ public class Contador
 		int intervalo = 1000;
 		int delay = 0;
 		tempo = t;
-		jogo.getTempoJogo().iniciaTempoEmbaralhar();
-		timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
+		timerJogo = new Timer();
+		timerJogo.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
 				if (tempo > 0) {
 					tempo--;
@@ -41,8 +40,8 @@ public class Contador
             	jogo.distribuirTabuleiro();
             }
         };
-        timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask ,delay, intervalo);
+        timerEmbaralhador = new Timer();
+        timerEmbaralhador.scheduleAtFixedRate(timerTask ,delay, intervalo);
 	}
 	
 	public void reiniciaTempoEmbaralhar(int i, int d) {
@@ -55,13 +54,17 @@ public class Contador
             	jogo.distribuirTabuleiro();
             }
         };
-        timer.cancel();
-        timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask ,delay, intervalo);
+        timerEmbaralhador.cancel();
+        timerEmbaralhador = new Timer();
+        timerEmbaralhador.scheduleAtFixedRate(timerTask ,delay, intervalo);
 	}
 	
 	public void cancelaTempoEmbaralhar() {
-		timer.cancel();
+		timerEmbaralhador.cancel();
+	}
+	
+	public void pararTempoJogo() {
+		timerJogo.cancel();
 	}
 
 	public int getTempo() {
