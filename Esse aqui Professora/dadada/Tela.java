@@ -22,7 +22,6 @@ public class Tela extends JFrame {
 	 * @param sel
 	 */
 	public void telaAtual(int sel) {
-		System.out.println(sel);
 		switch (sel) {
 		case 1:
 			setContentPane(menu);
@@ -30,6 +29,7 @@ public class Tela extends JFrame {
 		case 2:
 			setContentPane(jogo);
 			jogo.getTempoJogo().iniciarContagem(31);
+			//jogo.getTempoJogo().iniciaTempoEmbaralhar();
 			jogo.atualizaLabelTempo();
 			break;
 		case 3:
