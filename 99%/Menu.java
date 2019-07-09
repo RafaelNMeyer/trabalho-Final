@@ -16,16 +16,31 @@ public class Menu extends JPanel {
 	public Menu(Tela tela) {
 
 		setLayout(new BorderLayout());
-		painelBotoes = new JPanel();
-		painelBotoes.setPreferredSize(new Dimension(640, 500));
-		painelBotoes.setLayout(new GridLayout(2, 1, 5, 5));
-
+		
+		JPanel centralizaImg = new JPanel();
+		centralizaImg.setBackground(Color.WHITE);
+		
+		Icon hit = new ImageIcon( getClass().getResource("clique.jpg") );
+		JLabel planoDeFundo = new JLabel();
+		planoDeFundo.setIcon(hit);
+		centralizaImg.add(planoDeFundo);
+		add(centralizaImg, BorderLayout.CENTER);
+		
+		JPanel alinharBotaoJogar = new JPanel();
+		alinharBotaoJogar.setBackground(Color.WHITE);
+		JPanel alinharBotaoTutorial = new JPanel();
+		alinharBotaoTutorial.setBackground(Color.WHITE);
 		jogar = new JButton("Jogar");
-		painelBotoes.add(jogar);
+		alinharBotaoJogar.add(jogar);
 		tutorial = new JButton("Tutorial");
-		painelBotoes.add(tutorial);
+		alinharBotaoTutorial.add(tutorial);
+		
+		painelBotoes = new JPanel();
+		painelBotoes.setLayout(new BorderLayout());
+		painelBotoes.add(alinharBotaoJogar, BorderLayout.NORTH);
+		painelBotoes.add(alinharBotaoTutorial, BorderLayout.SOUTH);
 
-		add(painelBotoes, BorderLayout.CENTER);
+		add(painelBotoes, BorderLayout.SOUTH);
 
 		jogar.addActionListener(new ActionListener() {
 
@@ -43,7 +58,8 @@ public class Menu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Tutorial"))
-					JOptionPane.showMessageDialog(null, "Clique o mais rapido possivel nos quadrados pretos!!!!!!!!");
+					JOptionPane.showMessageDialog(null, "Clique o mais rapido possivel nos quadrados pretos!\n"
+							+ "Se clicar num quadrado BRANCO, você perde!");
 			}
 		});
 
