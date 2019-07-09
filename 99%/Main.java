@@ -9,5 +9,6 @@ public class Main {
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setSize(640, 700); // set frame size
 		game.setVisible(true);// display frame
-		}
+		game.setLocationRelativeTo(null);
+	}
 }

@@ -33,9 +33,12 @@ public class SequentialFileManager
    {
       try // open file
       {
-         input = new ObjectInputStream(
-            new FileInputStream( "historico.ser" ) );
+    	  input = new ObjectInputStream( new FileInputStream( "historico.ser" ) );
       } // end try
+      catch (FileNotFoundException e) { // verifica se o arquivo existe, para nao criar um novo
+
+          e.printStackTrace();
+      }
       catch ( IOException ioException )
       {
          System.err.println( "Error opening file." );
@@ -47,13 +50,11 @@ public class SequentialFileManager
       try // open file
       {
     	  File name = new File("historico.ser");
-    	 // System.out.println();
-		  if (!name.exists())
-          output = new ObjectOutputStream(
-            new FileOutputStream( "historico.ser" ) );
+    	  	if (!name.exists())
+    	  		output = new ObjectOutputStream( new FileOutputStream( "historico.ser" ) );
       } // end try
       catch (FileNotFoundException e) { // verifica se o arquivo existe, para nao criar um novo
-          // TODO Auto-generated catch block
+
           e.printStackTrace();
       }
       catch ( IOException ioException )
@@ -127,7 +128,7 @@ public class SequentialFileManager
       {
          if ( input != null )
             input.close();
-         System.exit( 0 );
+         //System.exit( 0 );
       } // end try
       catch ( IOException ioException )
       {

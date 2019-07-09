@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import javax.swing.*;
@@ -31,7 +32,7 @@ public class Game extends JPanel {
 	private Contador tres2um;
 	private JLabel mostraCountdown, mostraMsgCountdown;
 
-	public Game(Tela telaMae) { // highscore OK , falta escrever o rank no historico!
+	public Game(Tela telaMae) {
 		
 		tela = telaMae;
 		setLayout(new BorderLayout());
@@ -220,10 +221,9 @@ public class Game extends JPanel {
 		this.getTempoJogo().iniciaTempoEmbaralhar();
 	}
 	
-	public void lerHistorico() { // ESTA ESCREVENDO TB (????)
+	public void lerHistorico() { 
 		// logica para ler o conteudo do arquivo serializavel no início da execução do
 		// programa
-		fileManager = new SequentialFileManager(); // classe que administra as operacoes de criar e modificar o file
 		fileManager.openFileOutput();
 		fileManager.openFileInput();
 		try {
@@ -231,14 +231,15 @@ public class Game extends JPanel {
 		} catch (NullPointerException vazio) {
 			// exceção para a primeira leitura do arquivo ( pois o arquivo estará vazio )
 		}
-		fileManager.deleteFile();
+
+		fileManager.closeFileInput();
 		fileManager.closeFileOutput();
 	}
 	
 	public void atualizarHistorico() { //(NAO ESTA SENDO UTILIZADO!)
 		// Lógica para reescrever o arquivo serializavel com as ultimas informaçoes
 		// obtidas da jogada mais recente
-		//fileManager.openFileOutput();
+		fileManager.openFileOutput();
 		fileManager.deleteFile(); // o deleteFile() tem o mesmo código do openFile, ou seja, serve apenas para
 								// sobrescreve o mesmo file com um file vazio, "apagando" o conteudo do file
 								// anterior
@@ -249,6 +250,9 @@ public class Game extends JPanel {
 		// adiciona o objeto serializado recem criado a lista de objetos serializaveis
 		// resgatada do arquivo serializado
 		historicoJogadas.add(c);
+		Collections.sort( historicoJogadas, new ClassificarPorPontuacao() );
+		if ( historicoJogadas.size() > 10 )
+			historicoJogadas.remove(10);
 
 		// registra no novo arquivo serializado a lista com todo o historico anterior
 		// resgatado mais o objeto contendo a ultima tentativa

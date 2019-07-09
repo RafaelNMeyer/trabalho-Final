@@ -12,8 +12,6 @@ public class Tela extends JFrame {
 		
 		super("Fastest clicker");
 		menu = new Menu(this);
-		//jogo = new Game();
-		//historico = new Historico();
 		add(menu);
 		
 	}
@@ -31,14 +29,7 @@ public class Tela extends JFrame {
 			jogo = new Game(this);
 			setContentPane(jogo);
 			jogo.iniciarCountdown();
-			/* \/ ta no metodo iniciar jogo
-			jogo.add(jogo.getPainelCountdown());
-			jogo.getTres2um().iniciarContagem(3);
-			
-			\/ apos o fim do countdown ele mesmo executa essas linhas
-			jogo.getTempoJogo().iniciarContagem(31);
-			jogo.getTempoJogo().iniciaTempoEmbaralhar();
-			jogo.atualizaLabelTempo();*/
+
 			break;
 		case 3:
 			jogo.atualizarHistorico();

@@ -25,8 +25,6 @@ public class Menu extends JPanel {
 		tutorial = new JButton("Tutorial");
 		painelBotoes.add(tutorial);
 
-		//add(new JPanel(), BorderLayout.NORTH);
-		//add(new JPanel(), BorderLayout.SOUTH);
 		add(painelBotoes, BorderLayout.CENTER);
 
 		jogar.addActionListener(new ActionListener() {
@@ -37,7 +35,6 @@ public class Menu extends JPanel {
 					tela.telaAtual(2);
 					tela.setSize(640,700);
 				}
-				// retornaativaMenu(2);
 			}
 		});
 

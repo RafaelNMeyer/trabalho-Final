@@ -77,11 +77,7 @@ public class BotaoTabuleiro extends JButton {
 				botao.setBorderPainted(false);
 				jogo.getTempoJogo().cancelaTempoEmbaralhar();
 				jogo.getTempoJogo().pararTempoJogo();
-				/*JOptionPane.showMessageDialog(null,
-						"Voc� clicou em um quadrado BRANCO!\nJogo encerrado!\n"
-						+ "Sua pontua��o: "+jogo.getScore(),
-						"GAME OVER", JOptionPane.ERROR_MESSAGE);*/
-				//jogo.atualizarHistorico(); ???
+
 				tela.telaAtual(3);
 				tela.setSize(640, 699);
 				tela.setSize(640, 700);
